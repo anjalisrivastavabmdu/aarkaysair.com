@@ -1,0 +1,18 @@
+
+RewriteEngine On
+
+# Redirect from .html to non-.html URL
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.html [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Internally map non-.html URL to .html file
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*?)/?$ /$1.html [L]
+
+
+# Enable the Rewrite Engine
+RewriteEngine On
+
+# Redirect all 404 errors to the custom 404 page
+ErrorDocument 404 /404.html
+
